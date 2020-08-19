@@ -43,7 +43,7 @@ describe Checkout do
     end
 
     context 'when basket contains items with codes `001`, `001`, and `003`' do
-      let(:items) { [heart, heart, tshirt] }
+      let(:items) { [heart, heart.dup, tshirt] }
 
       it 'returns the basket total with promotional discounts applied' do
         expect(checkout.total).to eq "£36.95"
@@ -51,7 +51,7 @@ describe Checkout do
     end
 
     context 'when basket contains items with codes `001`, `001`, `002`, and `003`' do
-      let(:items) { [heart, cufflinks, heart, tshirt] }
+      let(:items) { [heart, cufflinks, heart.dup, tshirt] }
 
       it 'returns the basket total with promotional discounts applied' do
         expect(checkout.total).to eq "£73.76"
