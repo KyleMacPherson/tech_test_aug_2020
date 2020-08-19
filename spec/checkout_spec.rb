@@ -23,7 +23,7 @@ describe Checkout do
     let(:promotions) { [] }
 
     it 'returns the basket total' do
-      expect(checkout.total).to eq items.map(&:price).sum
+      expect(checkout.total).to eq "£74.20"
     end
   end
 
@@ -39,7 +39,7 @@ describe Checkout do
       let(:items) { [heart, cufflinks, tshirt] }
 
       it 'returns the basket total with promotional discounts applied' do
-        expect(checkout.total).to eq 6678
+        expect(checkout.total).to eq "£66.78"
       end
     end
   end
