@@ -2,8 +2,8 @@
 require 'checkout.rb'
 require 'item.rb'
 require 'basket.rb'
-require 'lavender_hearts_multibuy_promotion.rb'
-require 'ten_percent_off_over_sixty_pounds_promotion.rb'
+require 'multibuy_promotion.rb'
+require 'percentage_off_promotion.rb'
 
 
 describe Checkout do
@@ -30,8 +30,8 @@ describe Checkout do
   context 'all active promotions are applied' do
     let(:promotions) do
       [
-        LavenderHeartsMultibuyPromotion.new,
-        TenPercentOffOverSixtyPoundsPromo.new
+        MultibuyPromotion.new(item_code: '001', required_number_of_items: 2, discount_per_item: 75),
+        PercentageOffPromotion.new(required_total_spend: 6000, discount: 0.1)
       ]
     end
 

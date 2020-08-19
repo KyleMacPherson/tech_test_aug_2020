@@ -15,12 +15,13 @@ class Checkout
   def total
     discount = @promotions.map { |promotion| promotion.discount_to_apply(@basket) }.sum
     total_in_pence = @basket.total - discount
-    format_price(total_in_pence)
+    total_in_pence
+    # format_price(total_in_pence)
   end
 
   private
 
     def format_price(total_in_pence)
-      "£#{total_in_pence / 100}"
+      "£#{(total_in_pence / 100.0).sig(2)}"
     end
 end
