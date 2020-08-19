@@ -1,7 +1,3 @@
-# should we have a service to apply promotions? A seperate file to store promotion rules in?
-# looks like the github might want us to just enter a product code when scanning, should we have item directory in a separate file?
-# lavender hearts
-
 class Checkout
   def initialize(promotions = [])
     @basket = Basket.new

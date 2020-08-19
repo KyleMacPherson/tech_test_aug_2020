@@ -1,4 +1,3 @@
-#  could be struct
 class Item
   attr_accessor :product_code, :name , :price
 

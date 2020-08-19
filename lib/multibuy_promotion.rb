@@ -1,5 +1,3 @@
-# potential to create a multibuy promotion class that takes item code and discount per item
-
 class MultibuyPromotion
   def initialize(item_code:, required_number_of_items:, discount_per_item:)
     @item_code = item_code

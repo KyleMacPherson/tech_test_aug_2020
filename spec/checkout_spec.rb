@@ -1,4 +1,3 @@
-# make test helper, loop through all files in lib and require here. google how to load all files in directory.
 require 'checkout.rb'
 require 'item.rb'
 require 'basket.rb'
