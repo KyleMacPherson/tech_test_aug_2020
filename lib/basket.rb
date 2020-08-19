@@ -6,7 +6,7 @@ class Basket
   end
 
   def add(item)
-    @items << item
+    @items << item.dup
   end
 
   def total

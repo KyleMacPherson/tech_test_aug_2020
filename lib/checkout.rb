@@ -9,10 +9,8 @@ class Checkout
   end
 
   def total
-    discount = @promotions.map { |promotion| promotion.discount_to_apply(@basket) }.sum
-    total_in_pence = @basket.total - discount
-    total_in_pence
-    format_price(total_in_pence)
+    @promotions.each { |promotion| promotion.update_prices(@basket) }
+    format_price(@basket.total)
   end
 
   private

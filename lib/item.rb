@@ -6,4 +6,8 @@ class Item
     @price = price
     @name = name
   end
+
+  def apply_discount(discount_per_item)
+    @price = @price - discount_per_item
+  end
 end
