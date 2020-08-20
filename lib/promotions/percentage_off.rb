@@ -1,15 +1,15 @@
 module Promotions
   class PercentageOff
-    def initialize(required_total_spend:, discount:)
+    def initialize(required_total_spend:, discount_factor:)
       @required_total_spend = required_total_spend
-      @discount = discount
+      @discount_factor = discount_factor
     end
 
-    def update_prices(basket)
+    def discount(basket:, current_total:)
       if basket.total > @required_total_spend
-        basket.items.each do |item|
-          item.apply_discount(item.price * @discount)
-        end
+        current_total * @discount_factor
+      else
+        0
       end
     end
   end

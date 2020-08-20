@@ -1,18 +1,17 @@
 module Promotions
   class Multibuy
-    def initialize(item_code:, required_number_of_items:, discount_per_item:)
-      @item_code = item_code
+    def initialize(item:, required_number_of_items:, new_price:)
+      @item = item
       @required_number_of_items = required_number_of_items
-      @discount_per_item = discount_per_item
+      @new_price = new_price
     end
 
-    def update_prices(basket)
-      items_to_update = basket.items.select { |item| item.product_code == @item_code }
-
-      if items_to_update.count >= @required_number_of_items
-        items_to_update.each do |item|
-          item.apply_discount(@discount_per_item)
-        end
+    def discount(basket:, current_total:)
+      quantity = basket.quantity(@item)
+      if quantity >= @required_number_of_items
+        (@item.price - @new_price) * quantity
+      else
+        0
       end
     end
   end

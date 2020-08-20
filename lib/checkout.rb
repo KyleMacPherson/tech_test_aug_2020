@@ -9,8 +9,12 @@ class Checkout
   end
 
   def total
-    @promotions.each { |promotion| promotion.update_prices(@basket) }
-    format_price(@basket.total)
+    current_total = @basket.total
+    @promotions.each do |promotion|
+      discount = promotion.discount(basket: @basket, current_total: current_total)
+      current_total -= discount
+    end
+    format_price(current_total)
   end
 
   private

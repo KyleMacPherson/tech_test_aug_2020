@@ -1,15 +1,21 @@
 class Basket
-  attr_accessor :items
-
   def initialize
-    @items = []
+    @items = {}
   end
 
   def add(item)
-    @items << item
+    if @items[item]
+      @items[item] = @items[item] + 1
+    else
+      @items[item] = 1
+    end
+  end
+
+  def quantity(item)
+    @items[item] || 0
   end
 
   def total
-    @items.map(&:price).sum
+    @items.map { |item, quantity| item.price * quantity }.sum
   end
 end
